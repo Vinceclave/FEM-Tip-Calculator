@@ -1,0 +1,121 @@
+const inputBill = document.getElementById("enter-bill")
+const inputNumberPeople = document.getElementById("number-people")
+const customTip = document.getElementById("enter-custom-tip")
+const tipAmountTotal = document.getElementById("tip-total")
+const totalPerPerson = document.getElementById("total-per-person")
+const tipButton = document.querySelectorAll(".tips")
+const removeButton = document.querySelector(".reset")
+
+let errorArea = document.querySelector("error")
+
+// input declaration variables
+let getTip = 0
+let getBill = 0
+let getPeople = 0
+
+
+// Removing and Adding Active Buttons
+
+// Adding
+tipButton.forEach(buttons => {
+    buttons.addEventListener('click', (e) => {
+        removeActive()
+        buttons.classList.add("active")
+        if(buttons.value != "") {
+            getTip = buttons.value
+            calculate()
+            checkingComplete()
+            removeButton.classList.add("active")
+        } else {
+            getTip = 0
+        }
+
+        customTip.value = ""
+        calculate()
+        checkingComplete()
+    })
+})
+
+
+// Removing
+function removeActive() {
+    tipButton.forEach(buttons => {
+        buttons.classList.remove("active")
+})
+}
+
+
+function resetAll() {
+}
+
+removeButton.addEventListener('click', resetAll)
+
+
+
+
+
+
+checkingComplete()
+
+function checkingComplete() {
+    if(inputBill.value !== "" || inputNumberPeople.value !== "") {
+        inputError()
+        removeButton.classList.add("active")
+    } else if (getTip !== 0) {
+        inputError()
+    } else { 
+        document.querySelector(".error").style.display = "none"
+        inputNumberPeople.classList.remove("show")     
+        removeButton.classList.remove("active")
+   }
+}
+
+
+function inputError() {
+    getPeople = inputNumberPeople.value
+    
+    if(getPeople === "0") {
+           document.querySelector(".error").style.display = "block"
+            inputNumberPeople.classList.add("show")  
+        }  else {
+        document.querySelector(".error").style.display = "none"
+        inputNumberPeople.classList.remove("show")  
+        calculate()
+    }
+}
+
+
+function calculate() {
+    if (getBill > 0 && getPeople != 0) {
+        let TotalTip = (getBill*(getTip/1000))/getPeople
+        let totalBill = (getBill+(getBill*(getTip/100)))/getPeople;
+        tipAmountTotal.innerText = `$${TotalTip.toFixed(2)}`
+        totalPerPerson.innerText = `$${totalBill.toFixed(2)}`
+    } else {
+        tipAmountTotal.innerText =  "$0.00"
+        totalPerPerson.innerText =  "$0.00"
+    }
+}
+
+
+
+
+// custom tip button 
+customTip.addEventListener("input", function() {
+    if (customTip.value >= 0) {
+        getTip = customTip.value
+        calculate()
+    }
+})
+
+inputBill.addEventListener('input', function() {
+    getBill = Number(inputBill.value)
+    if(inputBill.value === "" || inputBill === "0") {
+        document.querySelector(".erroBill").display = "block"
+    }
+    checkingComplete()
+})
+
+
+inputNumberPeople.addEventListener('input', inputError)
+
