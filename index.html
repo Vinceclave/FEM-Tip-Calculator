@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Mentor | Tip calculator app</title>
+</head>
+<body>
+  <h1 class="title">SPLI<br>TTER</h1>
+  <div class="tip-calculator">
+    <div class="tip-left-content">
+      <div class="input-bill">
+        <h4>Bill</h4>
+        <span class="errorBill">Please enter your bill</span>
+        <input type="number" id="enter-bill" class="dollar" placeholder="0"  required>
+      </div>
+      <div class="select-tip">
+        <h4>Select Tip %</h4>
+          <div class="tip">
+          <button type="button" class="tips one tip-button" value="5">5%</button>
+          <button type="button" class="tips two tip-button" value="10">10%</button>
+          <button type="button" class="tips three tip-button" value="15">15%</button>
+          <button type="button" class="tips four tip-button" value="25">25%</button>
+          <button type="button" class="tips five tip-button" value="50">50%</button>
+          <input type="number" id="enter-custom-tip" class="tips six tip-button"  value= "" placeholder="Custom">
+          </div>
+        </div>
+      <div class="number-of-people">
+        <h4>Number of People</h4>
+        <span class="error">Can't be Zero</span>
+        <input type="number" id="number-people" class="people" placeholder="0">
+      </div>
+    </div>
+    <div class="tip-right-content">
+      <div class="tip-content">
+        <div class="tip-amount">
+          <h4>Tip Amount <span>/ person</span></h4>
+        
+          <h1 id="tip-total" value="$0.00">$0.00</h1>
+        </div>
+        <div class="total">
+          <h4>Total <span>/ person</span></h4>
+          <h1 id="total-per-person">$0.00</h1>
+        </div>
+      </div>
+        <button type="button" class="reset">Reset</button>
+    </div>
+  </div>
+    <script src="index.js"></script>
+</body>
+</html>
