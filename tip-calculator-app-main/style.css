@@ -147,6 +147,7 @@ input[class="dollar"] {
     background-image: url(/images/icon-dollar.svg);
     background-repeat: no-repeat;
     background-position: 15px 13px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 input[class="people"], 
@@ -154,6 +155,7 @@ input[class="people"].show {
     background-image: url(/images/icon-person.svg);
     background-repeat: no-repeat;
     background-position: 15px 15px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .select-tip {
@@ -173,6 +175,7 @@ input[class="people"].show {
     background-color: var(--very-dark-cyan);
     border: none;
     border-radius: 0.2em;
+    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .tip-button:not(:last-child):hover {
@@ -184,6 +187,7 @@ input[class="people"].show {
 .tip-error.show,
 .error.show {
     display: block;
+    transition: all s cubic-bezier(0.175, 0.885, 0.32, 1.275)
 }
 .input-bill > input.show,
 .number-of-people > input.show {
@@ -288,6 +292,7 @@ input[class="person"] {
 .total h1 {
     font-size: var(--space-m-l);
     color: var(--strong-cyan);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .reset {
@@ -299,7 +304,8 @@ input[class="person"] {
     border:  none;
     padding: 0.5em 0;
     border-radius: 0.3em;
-    opacity: 0.1
+    opacity: 0.1;
+    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)
 }
 
 .reset.active {
@@ -336,6 +342,9 @@ input[class="person"] {
         position: unset;
     }   
 
-    .error{
+    .error, 
+    .errorBill{
         float: right;
     }
+
+}
