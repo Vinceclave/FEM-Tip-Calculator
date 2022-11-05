@@ -90,13 +90,18 @@ isTipEmpty.addEventListener('click', isEmpty)
 
 
 function isEmpty() {
-    if (getTip === 0) {
+    if (getBill !== 0 && getTip === 0) {
       alert("Select a tip")    
-    } else {
+    } else if (getBill === 0) {
+        document.querySelector(".errorBill").classList.add("show")
+    }else {
         console.log("true")
     }
     
 }
+
+
+// get the total value of input 
 function getBillinput() {
     getBill = Number(inputBill.value)
     if (getBill !== 0) {
@@ -104,16 +109,20 @@ function getBillinput() {
          document.querySelector(".errorBill").classList.remove("show")
         document.querySelector(".error").classList.add("show")
     }  else {
-         document.querySelector(".errorBill").classList.add("show")
-         }
+        isEmpty()
+    }
     calculate()
 }
+
+// get the total value of input 
 
 function getTotalPeople() {
     getPeople = Number(inputNumberPeople.value)
     calculate()
     if (getPeople === 0 ) {
         document.querySelector(".error").classList.add("show")
+    } else if (getBill === 0) {
+        document.querySelector(".erroBill").classList.add("show")
     } else {
         removeButton.classList.add("active")
         document.querySelector(".error").classList.remove("show")
@@ -121,11 +130,14 @@ function getTotalPeople() {
     isEmpty()
 }
 
+// Reset all value of the variable
 function resetAll() {
     if(getBill !== 0 || getTip !== 0 || getPeople !== 0 || getBill === 0) {
         inputBill.value = ""
         inputNumberPeople.value = ""
-        buttons = ""
+        getBill = 0
+        getPeople = 0
+        getTip = 0
         customTip.value = ""
         document.querySelector(".error").classList.remove("show")
         document.querySelector(".errorBill").classList.remove("show")
